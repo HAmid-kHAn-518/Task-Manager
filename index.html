@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Smart Task Manager | Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    
+</head>
+<body>
+<div class="app-container">
+    
+    <div id="authContainer" class="auth-screen">
+        <div class="auth-card" id="authCard">
+            <h2 id="authTitle">Login</h2>
+            <div class="input-group">
+                <label>Username</label>
+                <input type="text" id="authUsername" placeholder="Your Name">
+            </div>
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" id="authPassword" placeholder="••••••">
+            </div>
+            <button class="btn btn-primary" id="authSubmitBtn">Login</button>
+            <div class="switch-auth">
+                <span id="toggleAuthMode">Don't have an account? Sign up</span>
+            </div>
+            <div id="authError" style="color: var(--danger); font-size: 0.8rem; text-align:center; margin-top:12px;"></div>
+        </div>
+    </div>
+
+    
+    <div id="dashboard" class="dashboard">
+        <div class="top-bar">
+            <div class="user-greeting">
+                <h3 id="displayUsername">Welcome, User</h3>
+                <p>Smart Task Manager</p>
+            </div>
+            <div style="display: flex; gap: 12px;">
+                <div class="theme-toggle" id="themeToggleBtn">
+                    <i class="fas fa-moon"></i> <span>Dark/Light</span>
+                </div>
+                <button class="logout-btn" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card"><div class="stat-title">Total Tasks</div><div class="stat-value" id="totalTasksStat">0</div></div>
+            <div class="stat-card"><div class="stat-title">Completed</div><div class="stat-value" id="completedTasksStat">0</div></div>
+            <div class="stat-card"><div class="stat-title">Pending</div><div class="stat-value" id="pendingTasksStat">0</div></div>
+            <div class="stat-card"><div class="stat-title">In Progress</div><div class="stat-value" id="progressTasksStat">0</div></div>
+        </div>
+        <div class="task-toolbar">
+            <div class="search-filter">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search tasks...">
+                </div>
+                <select id="filterStatusSelect" class="filter-select">
+                    <option value="all">All Status</option>
+                    <option value="pending">Pending</option>
+                    <option value="in-progress">In Progress</option>
+                    <option value="completed">Completed</option>
+                </select>
+            </div>
+            <button class="add-task-btn" id="openAddTaskModal"><i class="fas fa-plus"></i> Add Task</button>
+        </div>
+
+        <div class="task-board" id="taskBoard">
+            <div class="task-column" data-status="pending">
+                <div class="column-header"><span>📋 Pending</span><span id="pendingCountBadge">0</span></div>
+                <div class="task-list" id="pendingList" data-status="pending"></div>
+            </div>
+            <div class="task-column" data-status="in-progress">
+                <div class="column-header"><span>⚡ In Progress</span><span id="progressCountBadge">0</span></div>
+                <div class="task-list" id="progressList" data-status="in-progress"></div>
+            </div>
+            <div class="task-column" data-status="completed">
+                <div class="column-header"><span>✅ Completed</span><span id="completedCountBadge">0</span></div>
+                <div class="task-list" id="completedList" data-status="completed"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="taskModal" class="modal">
+    <div class="modal-content">
+        <h3 id="modalTitle">Add New Task</h3>
+        <input type="text" id="taskTitleInput" placeholder="Task title" autocomplete="off">
+        <textarea id="taskDescInput" rows="2" placeholder="Description (optional)"></textarea>
+        <select id="taskStatusInput">
+            <option value="pending">Pending</option>
+            <option value="in-progress">In Progress</option>
+            <option value="completed">Completed</option>
+        </select>
+        <div class="modal-buttons">
+            <button class="btn-outline btn" id="closeModalBtn">Cancel</button>
+            <button class="btn-primary btn" id="saveTaskBtn">Save</button>
+        </div>
+        <input type="hidden" id="editTaskId" value="">
+    </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
