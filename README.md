@@ -2,9 +2,6 @@
 
 A simple and beautiful task manager app to organize your daily tasks. Built with HTML, CSS, and JavaScript.
 
-## 🚀 Live Demo
-
-
 ## ✨ Features
 
 - Add new tasks
@@ -37,3 +34,6 @@ A simple and beautiful task manager app to organize your daily tasks. Built with
 ## 👨‍💻 Author
 
 Hamid khan
+
+## 🚀 Live Demo
+https://hamid-khan-518.github.io/Task-Manager/
